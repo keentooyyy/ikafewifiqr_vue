@@ -4,13 +4,23 @@ export default {
   name: "WifiInfo",
   props: {
     p_password: String,
-    mobileView: String,
+    p_type: String,
   },
+  emits: ['wifi-info'],
   data() {
     return {
       ssid: '',
       password: '',
       wifi_info: [],
+      mobileView: false,
+      desktopView: false,
+    }
+  },
+  beforeMount() {
+    if (this.p_type === "mobile") {
+      this.mobileView = true;
+    } else if (this.p_type === "desktop") {
+      this.desktopView = true;
     }
   },
   mounted() {
@@ -32,19 +42,37 @@ export default {
 </script>
 
 <template>
-  <div class="flex justify-center res-wifiinfo-div">
-    <table class="text-xs res-wifiinfo-table">
-      <tbody>
-      <tr>
-        <td class="text-right pr-10 opacity-50">SSID:</td>
-        <td><span id="ssid" class="font-bold" @v-model="ssid">iKafe Free Wi-Fi</span></td>
-      </tr>
-      <tr>
-        <td class="text-right pr-10 opacity-50">Password:</td>
-        <td><span id="password" class="font-bold" @v-model="password">{{ p_password }}</span></td>
-      </tr>
-      </tbody>
-    </table>
+  <div>
+
+    <div v-if="mobileView" class="flex justify-center">
+      <table class="text-xs res-wifiinfo-table">
+        <tbody>
+        <tr>
+          <td class="text-right pr-10 opacity-50">SSID:</td>
+          <td><span id="ssid" class="font-bold" @v-model="ssid">iKafe Free Wi-Fi</span></td>
+        </tr>
+        <tr>
+          <td class="text-right pr-10 opacity-50">Password:</td>
+          <td><span id="password" class="font-bold" @v-model="password">{{ p_password }}</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div v-if="desktopView">
+      <div>
+        <div>SSID:</div>
+        <span id="ssid" @v-model="ssid">iKafe Free Wi-Fi</span>
+      </div>
+
+      <div>
+        <div>Password:</div>
+        <span id="password" class="" @v-model="password">{{ p_password }}</span>
+      </div>
+
+    </div>
+
+
   </div>
 
 
@@ -54,6 +82,10 @@ export default {
 @screen xs {
   .res-wifiinfo-table {
     @apply text-xl
+  }
+
+  .res-wifiinfo-div {
+
   }
 }
 @screen md {

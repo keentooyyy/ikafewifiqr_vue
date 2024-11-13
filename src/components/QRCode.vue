@@ -5,12 +5,22 @@ export default {
   name: "QRCode",
   props: {
     p_wifi_info: Array,
+    p_type: String,
   },
   data() {
     return {
       ssid: '',
       password: '',
       src: '',
+      mobileView: false,
+      desktopView: false,
+    }
+  },
+  beforeMount() {
+    if (this.p_type === "mobile") {
+      this.mobileView = true;
+    } else if (this.p_type === "desktop") {
+      this.desktopView = true;
     }
   },
   updated() {
@@ -61,10 +71,22 @@ export default {
 </script>
 
 <template>
-  <div class="flex justify-center">
-    <div class="w-96 res-qrcode-container">
-      <img :src="src" alt="qr-code" class="w-full lg-qrcode-img">
+  <div>
+
+
+    <div v-if="mobileView" class="flex justify-center">
+      <div class="w-96 res-qrcode-container">
+        <img :src="src" alt="qr-code" class="w-full lg-qrcode-img">
+      </div>
     </div>
+
+    <div v-if="desktopView">
+      <div class="">
+        <img :src="src" alt="qr-code" class="">
+      </div>
+    </div>
+
+
   </div>
 
 

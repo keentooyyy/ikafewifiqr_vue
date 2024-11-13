@@ -66,20 +66,23 @@ export default defineComponent({
 </script>
 
 <template>
+
   <div v-if="mobileElementVisible" class="grid grid-cols-1 mx-auto res-app-div-container ">
     <MobileBanner p_type="mobile"/>
     <ScanMe/>
-    <QRCode :p_wifi_info="wifi_info" class=""/>
-    <WifiInfo :p_password="p_data" @wifi-info="handleWifiEmit"/>
+    <QRCode :p_wifi_info="wifi_info" p_type="mobile"/>
+    <WifiInfo :p_password="p_data" @wifi-info="handleWifiEmit" p_type="mobile"/>
   </div>
+
+
 
   <div v-if="desktopVisible" class="flex">
     <MobileBanner p_type="desktop"/>
     <div class="flex-grow custom-grid">
       <div class="custom-col-span text-5xl font-bold text-center my-24"> Free Wi-Fi Available</div>
-      <WifiInfo :p_password="p_data" @wifi-info="handleWifiEmit"/>
-      <div class="h-min">
-        <QRCode :p_wifi_info="wifi_info" class=""/>
+      <WifiInfo :p_password="p_data" @wifi-info="handleWifiEmit" p_type="desktop"/>
+      <div>
+        <QRCode :p_wifi_info="wifi_info" p_type="desktop"/>
         <ScanMe/>
       </div>
 

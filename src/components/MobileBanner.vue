@@ -6,30 +6,31 @@ export default {
   },
   data() {
     return {
-      mobileBanner: false,
-      desktopBanner: false,
+      mobileView: false,
+      desktopView: false,
     }
   },
   beforeMount() {
     if (this.p_type === "mobile") {
-      this.mobileBanner = true;
+      this.mobileView = true;
     } else if (this.p_type === "desktop") {
-      this.desktopBanner = true;
+      this.desktopView = true;
     }
   }
 }
 </script>
 
 <template>
-  <div v-if="mobileBanner" class="relative">
-    <img alt="header" class="" src="/header.png">
-    <div class="w-full text-center title absolute text-sm text-white font-bold res-title-div">Free Wi-Fi Available</div>
-  </div>
+  <div>
+    <div v-if="mobileView" class="relative">
+      <img alt="header" class="" src="/header.png">
+      <div class="w-full text-center title absolute text-sm text-white font-bold res-title-div">Free Wi-Fi Available</div>
+    </div>
 
-  <div v-if="desktopBanner">
-    <img class="h-screen" src="/header-rotate.png" alt="header">
+    <div v-if="desktopView">
+      <img class="h-screen" src="/header-rotate.png" alt="header">
+    </div>
   </div>
-
 </template>
 
 <style scoped>
