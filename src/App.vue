@@ -27,6 +27,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    console.log(fetch("https://raw.githubusercontent.com/keentooyyy/ikafewifiqr_vue/refs/heads/master/public/password.txt").then(res => res.text()))
     this.readPasswordFile();
 
     this.resizeWindowEvent()
