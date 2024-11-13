@@ -4,6 +4,7 @@ export default {
   name: "WifiInfo",
   props: {
     p_password: String,
+    mobileView: String,
   },
   data() {
     return {
@@ -31,7 +32,6 @@ export default {
 </script>
 
 <template>
-
   <div class="flex justify-center res-wifiinfo-div">
     <table class="text-xs res-wifiinfo-table">
       <tbody>
@@ -60,11 +60,5 @@ export default {
   .res-wifiinfo-table {
     @apply text-2xl
   }
-}
-@screen lg{
-  .res-wifiinfo-div{
-    @apply h-min justify-normal w-full block;
-  }
-
 }
 </style>

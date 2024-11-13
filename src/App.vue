@@ -13,7 +13,7 @@ export default defineComponent({
       p_data: '',
       wifi_info: [],
       mobileElementVisible: false,
-      mobileWidth: 1024,
+      mobileWidth: 1023,
       desktopVisible: false,
     }
   },
@@ -28,10 +28,14 @@ export default defineComponent({
   },
   mounted() {
     this.readPasswordFile();
+
     this.resizeWindowEvent()
+    this.isElementVisible()
   },
   unmounted() {
+
     this.resizeWindowEvent()
+    this.isElementVisible()
   },
   methods: {
     readPasswordFile() {
@@ -72,7 +76,7 @@ export default defineComponent({
   <div v-if="desktopVisible" class="flex">
     <MobileBanner p_type="desktop"/>
     <div class="flex-grow custom-grid">
-      <div class="custom-col-span"> Free Wi-Fi Available</div>
+      <div class="custom-col-span text-5xl font-bold text-center my-24"> Free Wi-Fi Available</div>
       <WifiInfo :p_password="p_data" @wifi-info="handleWifiEmit"/>
       <div class="h-min">
         <QRCode :p_wifi_info="wifi_info" class=""/>
