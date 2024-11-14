@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-  <div class="mt-5 res-scanme-div-container">
+  <div class="res-scanme-div-container">
     <div class="flex justify-center items-center gap-5">
       <img alt="wifi-logo" class="w-10 res-scanme-img" src="/wifi-logo-svgrepo-com.png">
       <div class="font-bold text-2xl res-scanme-div-scantext">Scan Me!</div>
@@ -28,9 +28,10 @@ export default {
     @apply text-3xl
   }
 }
-@screen lg {
-  .res-scanme-div-container {
-    @apply mt-5
+@screen lg{
+  .res-scanme-div-container{
+    z-index: 2;
+    margin-top: -50px;
   }
 }
 
