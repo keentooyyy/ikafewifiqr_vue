@@ -13,7 +13,7 @@ export default defineComponent({
       p_data: '',
       wifi_info: [],
       mobileElementVisible: false,
-      mobileWidth: 1023,
+      mobileWidth: 1024,
       desktopVisible: false,
     }
   },
@@ -27,9 +27,7 @@ export default defineComponent({
     }
   },
   mounted() {
-    console.log(fetch("https://raw.githubusercontent.com/keentooyyy/ikafewifiqr_vue/refs/heads/master/public/password.txt").then(res => res.text()))
     this.readPasswordFile();
-
     this.resizeWindowEvent()
     this.isElementVisible()
   },
@@ -56,7 +54,7 @@ export default defineComponent({
     },
     isElementVisible() {
       this.mobileElementVisible = window.innerWidth < this.mobileWidth;
-      this.desktopVisible = window.innerWidth > this.mobileWidth;
+      this.desktopVisible = window.innerWidth >= this.mobileWidth;
     },
     resizeWindowEvent() {
       window.addEventListener("resize", this.isElementVisible);
@@ -79,11 +77,12 @@ export default defineComponent({
 
   <div v-if="desktopVisible" class="flex">
     <MobileBanner p_type="desktop"/>
-    <div class="flex-grow custom-grid">
-      <div class="custom-col-span text-5xl font-bold text-center my-24"> Free Wi-Fi Available</div>
-      <WifiInfo :p_password="p_data" @wifi-info="handleWifiEmit" p_type="desktop"/>
-      <div>
+    <div class="flex-grow custom-grid custom-margin">
+      <div class="custom-col-span text-6xl font-bold text-center mt-20 mb-7 res-desktop-text"> Free Wi-Fi Available</div>
+      <WifiInfo :p_password="p_data" @wifi-info="handleWifiEmit" p_type="desktop" class="h-3/4"/>
+      <div class="flex flex-col res-qrcode-scanme-container relative">
         <QRCode :p_wifi_info="wifi_info" p_type="desktop"/>
+        <div class="absolute h-4/6 bg-gray-500 divider"></div>
         <ScanMe/>
       </div>
 
@@ -93,6 +92,14 @@ export default defineComponent({
 </template>
 
 <style scoped>
+.custom-margin{
+ margin-left: -60px;
+}
+.divider{
+  top: 50px;
+  width: 3px;
+  opacity: 0.5;
+}
 .custom-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -112,10 +119,17 @@ export default defineComponent({
 
 }
 @screen xl {
-
+  .res-qrcode-scanme-container{
+    @apply h-4/5
+  }
 }
 @screen 2xl {
-
+  .res-desktop-text{
+    @apply text-7xl
+  }
+  .res-qrcode-scanme-container{
+    @apply h-full
+  }
 }
 
 

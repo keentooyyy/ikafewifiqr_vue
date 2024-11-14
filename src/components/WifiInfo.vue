@@ -59,15 +59,15 @@ export default {
       </table>
     </div>
 
-    <div v-if="desktopView">
+    <div v-if="desktopView" class="flex flex-col items-center h-full text-center text-4xl gap-y-10 justify-center res-wifiinfo-desktop">
       <div>
-        <div>SSID:</div>
-        <span id="ssid" @v-model="ssid">iKafe Free Wi-Fi</span>
+        <div class="opacity-50">SSID:</div>
+        <span id="ssid" class="font-bold" @v-model="ssid">iKafe Free Wi-Fi</span>
       </div>
 
       <div>
-        <div>Password:</div>
-        <span id="password" class="" @v-model="password">{{ p_password }}</span>
+        <div class="opacity-50">Password:</div>
+        <span id="password" class="font-bold" @v-model="password">{{ p_password }}</span>
       </div>
 
     </div>
@@ -83,14 +83,15 @@ export default {
   .res-wifiinfo-table {
     @apply text-xl
   }
-
-  .res-wifiinfo-div {
-
-  }
 }
 @screen md {
   .res-wifiinfo-table {
     @apply text-2xl
+  }
+}
+@screen 2xl{
+  .res-wifiinfo-desktop{
+    @apply text-5xl
   }
 }
 </style>

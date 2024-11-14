@@ -28,9 +28,15 @@ export default {
     @apply text-3xl
   }
 }
-@screen lg{
-  .res-scanme-div-scantext{
-    @appply none
+@screen lg {
+  .res-scanme-div-container {
+    @apply mt-5
+  }
+}
+
+@screen 2xl {
+  .res-scanme-div-container {
+    @apply mt-0
   }
 }
 </style>

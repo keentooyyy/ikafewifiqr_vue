@@ -80,9 +80,9 @@ export default {
       </div>
     </div>
 
-    <div v-if="desktopView">
-      <div class="">
-        <img :src="src" alt="qr-code" class="">
+    <div v-if="desktopView" class="flex justify-center">
+      <div class="w-9/12 res-qrcode-container-desk">
+        <img :src="src" alt="qr-code" class="w-full">
       </div>
     </div>
 
@@ -95,6 +95,11 @@ export default {
 <style scoped>
 @screen md {
   .res-qrcode-container {
+    @apply w-4/6
+  }
+}
+@screen 2xl {
+  .res-qrcode-container-desk {
     @apply w-4/6
   }
 }
