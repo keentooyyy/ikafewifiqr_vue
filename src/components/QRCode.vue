@@ -81,7 +81,7 @@ export default {
     </div>
 
     <div v-if="desktopView" class="flex justify-center">
-      <div class="w-9/12 res-qrcode-container-desk">
+      <div class=" res-qrcode-container-desk">
         <img :src="src" alt="qr-code" class="w-full">
       </div>
     </div>
@@ -98,9 +98,5 @@ export default {
     @apply w-4/6
   }
 }
-@screen 2xl {
-  .res-qrcode-container-desk {
-    @apply w-4/6
-  }
-}
+
 </style>

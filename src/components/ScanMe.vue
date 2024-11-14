@@ -34,9 +34,4 @@ export default {
   }
 }
 
-@screen 2xl {
-  .res-scanme-div-container {
-    @apply mt-0
-  }
-}
 </style>

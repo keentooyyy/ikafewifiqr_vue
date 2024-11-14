@@ -75,19 +75,18 @@ export default defineComponent({
 
 
 
-  <div v-if="desktopVisible" class="flex">
+  <div v-if="desktopVisible" class="flex max-w-screen-2xl mx-auto">
     <MobileBanner p_type="desktop"/>
     <div class="flex-grow custom-grid custom-margin">
       <div class="custom-col-span text-6xl font-bold text-center mt-20 mb-7 res-desktop-text"> Free Wi-Fi Available</div>
-      <WifiInfo :p_password="p_data" @wifi-info="handleWifiEmit" p_type="desktop" class="h-3/4"/>
+      <WifiInfo :p_password="p_data" @wifi-info="handleWifiEmit" p_type="desktop"/>
       <div class="flex flex-col res-qrcode-scanme-container relative">
         <QRCode :p_wifi_info="wifi_info" p_type="desktop"/>
-        <div class="absolute h-4/6 bg-gray-500 divider"></div>
+        <div class="absolute h-4/5 bg-gray-500 divider"></div>
         <ScanMe/>
       </div>
 
     </div>
-
   </div>
 </template>
 
@@ -121,14 +120,6 @@ export default defineComponent({
 @screen xl {
   .res-qrcode-scanme-container{
     @apply h-4/5
-  }
-}
-@screen 2xl {
-  .res-desktop-text{
-    @apply text-7xl
-  }
-  .res-qrcode-scanme-container{
-    @apply h-full
   }
 }
 

@@ -89,9 +89,4 @@ export default {
     @apply text-2xl
   }
 }
-@screen 2xl{
-  .res-wifiinfo-desktop{
-    @apply text-5xl
-  }
-}
 </style>
